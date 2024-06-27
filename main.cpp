@@ -82,19 +82,16 @@ pair<Individual, Individual> crossover_uniform(Individual& parent1, Individual& 
 void calculate_fitness(Individual& ind, vector<Caja>& itemPool, int max_height) {
     vector <int> disponible(NUM_ANAQUELES,MAX_ALTURA);
     int sum = 0;
-    for (int i = 0; i < ind.chromosome.size();i++) {
-        disponible[ind.chromosome[i]] -= itemPool[i].altura;
-    }
-     
-    for(int i=0; i< disponible.size(); i++) {
-        
-        if(disponible[i]<0){
-            ind.fitness = 0;
-            return;
-        } else  sum += disponible[i];
-    }
 
-    ind.fitness = sum/NUM_ANAQUELES;
+    for (int i = 0; i < ind.chromosome.size();i++) {
+        if(disponible[ind.chromosome[i]] - itemPool[i].altura >= 0)
+            disponible[ind.chromosome[i]] -= itemPool[i].altura;
+    }
+    
+    for(int i=0; i< disponible.size(); i++) {
+        sum += disponible[i];
+    }
+    ind.fitness = NUM_ANAQUELES*MAX_ALTURA - sum;
 }
 
 void evaluate_population(vector<Individual>& population, vector<Caja>& itemPool, int max_height) {
@@ -133,7 +130,7 @@ void mutation_swap(Individual& ind) {
     std::swap(ind.chromosome[pos1], ind.chromosome[pos2]);
 }
 
-void genetic_algorithm(vector<Individual>& population, vector<Caja>& itemPool, int max_height, int generations, double mutation_rate, int tournament_size) {
+void genetic_algorithm(vector<Individual>& population, vector<Caja>& itemPool, int max_height, int generations, double mutation_rate, int tournament_size, int &bI) {
     int popsize = population.size();
     evaluate_population(population, itemPool, max_height);
     vector<int> bestfitness;
@@ -187,6 +184,7 @@ void genetic_algorithm(vector<Individual>& population, vector<Caja>& itemPool, i
     for (int gene : best_individual->chromosome) {
         cout << gene << " ";
     }
+    bI = best_individual->fitness;
     cout << "] con fitness: " << best_individual->fitness << endl;
 }
 
@@ -200,15 +198,28 @@ int main(int argc, char** argv) {
     
     const int POPSIZE = 10;
     const int NUM_ITEMS = itemPool.size();
-    const double MUTATION_RATE = 0;
+    const double MUTATION_RATE = 0.5;
     const int GENERATIONS = 100;
     const int TOURNAMENT_SIZE = 3;
+    const int numIteraciones = 10;
+    int BestIndividual;
+    int sum = 0;
+    vector <int> BestIndividuals;
     
+    for(int i=0; i < numIteraciones; i++){
+        vector<Individual> population = init_population(POPSIZE,NUM_ITEMS);
+        genetic_algorithm(population, itemPool, MAX_ALTURA, GENERATIONS, MUTATION_RATE, TOURNAMENT_SIZE,BestIndividual);
+        BestIndividuals.push_back(BestIndividual);
+        cout << endl;
+    }
+     
+    cout << endl <<"Mejor Fitness de las " << numIteraciones << " iteraciones:"<< endl;
+    for(int i=0; i<numIteraciones;i++){
+        cout << BestIndividuals[i] << " ";
+        sum += BestIndividuals[i];
+    }
     
-    vector<Individual> population = init_population(POPSIZE,NUM_ITEMS);
-    
-    genetic_algorithm(population, itemPool, MAX_ALTURA, GENERATIONS, MUTATION_RATE, TOURNAMENT_SIZE);
-    
+    cout << endl << "Promedio: " << sum/numIteraciones;
     
     return 0;
 }
