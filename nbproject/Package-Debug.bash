@@ -13,9 +13,9 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dylib
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/anaqueles
-OUTPUT_BASENAME=anaqueles
-PACKAGE_TOP_DIR=anaqueles/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tarea-pucp-asignacion-cajas-aranqueles
+OUTPUT_BASENAME=tarea-pucp-asignacion-cajas-aranqueles
+PACKAGE_TOP_DIR=tarea-pucp-asignacion-cajas-aranqueles/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/anaqueles/bin"
+makeDirectory "${NBTMPDIR}/tarea-pucp-asignacion-cajas-aranqueles/bin"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/anaqueles.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/tarea-pucp-asignacion-cajas-aranqueles.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/anaqueles.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/tarea-pucp-asignacion-cajas-aranqueles.tar *
 checkReturnCode
 
 # Cleanup

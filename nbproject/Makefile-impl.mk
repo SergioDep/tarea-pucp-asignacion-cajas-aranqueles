@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Anaqueles
+PROJECTNAME=tarea-pucp-asignacion-cajas-aranqueles
 
 # Active Configuration
 DEFAULTCONF=Debug

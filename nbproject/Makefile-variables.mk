@@ -9,11 +9,11 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-MacOSX
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
-CND_ARTIFACT_NAME_Debug=anaqueles
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/anaqueles
+CND_ARTIFACT_NAME_Debug=tarea-pucp-asignacion-cajas-aranqueles
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/tarea-pucp-asignacion-cajas-aranqueles
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
-CND_PACKAGE_NAME_Debug=anaqueles.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/anaqueles.tar
+CND_PACKAGE_NAME_Debug=tarea-pucp-asignacion-cajas-aranqueles.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/tarea-pucp-asignacion-cajas-aranqueles.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
